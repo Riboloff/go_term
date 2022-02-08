@@ -41,8 +41,8 @@ func printMap(m gamemap.Map, char character.Char) {
 
 func main() {
 	tm.Clear()
-	char := character.CharInit()
-	_map := gamemap.MapInit()
+	char := character.NewChar()
+	_map := gamemap.NewMap()
 	//printMap(_map, char)
 
 	charMoveRight(_map, char)
@@ -55,9 +55,9 @@ func charMoveRight(m gamemap.Map, char character.Char) {
 
 		printMap(m, char)
 		if i%2 == 1 {
-			character.CharArmUp(&char)
+			char.ArmUp()
 		} else {
-			character.CharArmDown(&char)
+			char.ArmDown()
 		}
 		time.Sleep(time.Second)
 		i = i + 1

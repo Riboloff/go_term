@@ -10,17 +10,17 @@ type Cord struct {
 	X, Y int
 }
 
-func CharArmUp(m *Char) {
-	m.Head[2] = '/'
-	m.Body[2] = ' '
+func (c *Char) ArmUp() {
+	c.Head[2] = '/'
+	c.Body[2] = ' '
 }
 
-func CharArmDown(m *Char) {
-	m.Head[2] = ' '
-	m.Body[2] = '\\'
+func (c *Char) ArmDown() {
+	c.Head[2] = ' '
+	c.Body[2] = '\\'
 }
 
-func CharInit() Char {
+func NewChar() Char {
 	return Char{
 		Head:   [3]byte{' ', '0', ' '},
 		Body:   [3]byte{'<', '#', '\\'},
