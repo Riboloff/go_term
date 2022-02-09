@@ -4,6 +4,8 @@ const (
 	FRONT = iota + 1
 	RIGHT_ONE
 	RIGHT_TWO
+	LEFT_ONE
+	LEFT_TWO
 )
 
 type Char struct {
@@ -40,6 +42,7 @@ func (c *Char) ArmDown() {
 func (c *Char) MoveRight() {
 	c.Cord.X = c.Cord.X + 1
 
+	c.ArmDown()
 	if c.State != RIGHT_ONE {
 		c.State = RIGHT_ONE
 		c.Body[0] = '.'
@@ -54,5 +57,26 @@ func (c *Char) MoveRight() {
 		c.Legs[0] = '-'
 		c.Legs[1] = '|'
 		c.Legs[2] = ' '
+	}
+}
+
+func (c *Char) MoveLeft() {
+	c.Cord.X = c.Cord.X - 1
+
+	c.ArmDown()
+	if c.State != LEFT_ONE {
+		c.State = LEFT_ONE
+		c.Body[0] = '/'
+		c.Body[2] = '.'
+		c.Legs[0] = ' '
+		c.Legs[1] = '<'
+		c.Legs[2] = '\\'
+	} else {
+		c.State = LEFT_TWO
+		c.Body[0] = '.'
+		c.Body[2] = '>'
+		c.Legs[0] = ' '
+		c.Legs[1] = '|'
+		c.Legs[2] = '-'
 	}
 }
